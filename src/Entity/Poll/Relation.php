@@ -25,7 +25,6 @@ class Relation extends Entity implements
     TimestampableAwareInterface,
     RowStatusableAwareInterface
 {
-
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
 
