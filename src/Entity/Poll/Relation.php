@@ -23,7 +23,8 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  */
 class Relation extends Entity implements
     TimestampableAwareInterface,
-    RowStatusableAwareInterface
+    RowStatusableAwareInterface,
+    RelationInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
