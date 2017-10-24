@@ -5,7 +5,7 @@ return [
         'connection' => [
             'orm_default' => [
                 'params' => [
-                    'host' => 'localhost',
+                    'host' => '127.0.0.1',
                     'user' => 'root',
                     'password' => 'root',
                     'dbname' => 'open-power.dev',
