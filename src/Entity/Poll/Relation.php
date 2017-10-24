@@ -53,6 +53,14 @@ class Relation extends Entity implements
     /**
      * @return string
      */
+    public function getSubject()
+    {
+        return $this->getPoll()->getSubject();
+    }
+
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return $this->code;
