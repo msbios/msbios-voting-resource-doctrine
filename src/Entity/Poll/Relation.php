@@ -53,14 +53,6 @@ class Relation extends Entity implements
     /**
      * @return string
      */
-    public function getSubject()
-    {
-        return $this->getPoll()->getSubject();
-    }
-
-    /**
-     * @return string
-     */
     public function getCode()
     {
         return $this->code;
@@ -113,10 +105,18 @@ class Relation extends Entity implements
     }
 
     /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->getPoll()->getSubject();
+    }
+
+    /**
      * @return ArrayCollection
      */
     public function getOptions()
     {
-        return $this->poll->getOptions();
+        return $this->getOptions()->getOptions();
     }
 }
