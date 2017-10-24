@@ -15,7 +15,7 @@ use Zend\Loader\StandardAutoloader;
  */
 class Module implements ModuleInterface // , FormElementProviderInterface
 {
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
 
     /**
      * Returns configuration to merge with application configuration
