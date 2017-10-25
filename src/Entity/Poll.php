@@ -8,8 +8,6 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Resource\Doctrine\IdentifierableAwareInterface;
-use MSBios\Resource\Doctrine\IdentifierAwareTrait;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -32,6 +30,13 @@ class Poll extends Entity implements
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=255, unique=true, nullable=true)
+     */
+    private $code;
 
     /**
      * @var string
@@ -62,6 +67,22 @@ class Poll extends Entity implements
     public function __construct()
     {
         $this->options = new ArrayCollection;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode(string $code)
+    {
+        $this->code = $code;
     }
 
     /**

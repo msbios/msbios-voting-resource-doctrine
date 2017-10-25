@@ -4,11 +4,11 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\Entity\Poll;
+namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 /**
  * Interface RelationInterface
- * @package MSBios\Voting\Resource\Doctrine\Entity\Poll
+ * @package MSBios\Voting\Resource\Doctrine\Entity
  */
 interface RelationInterface
 {

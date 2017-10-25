@@ -4,9 +4,8 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\Entity\Poll;
+namespace MSBios\Voting\Resource\Doctrine\Entity\Vote;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
@@ -16,10 +15,10 @@ use MSBios\Voting\Resource\Doctrine\Entity;
 
 /**
  * Class Relation
- * @package MSBios\Voting\Resource\Doctrine\Entity\Poll
+ * @package MSBios\Voting\Resource\Doctrine\Entity\Vote
  *
  * @ORM\Entity
- * @ORM\Table(name="vot_t_poll_relations")
+ * @ORM\Table(name="vot_t_vote_relations")
  */
 class Relation extends Entity implements
     TimestampableAwareInterface,
@@ -30,47 +29,32 @@ class Relation extends Entity implements
     use RowStatusableAwareTrait;
 
     /**
-     * @var string
+     * @var Entity\Poll\Relation
      *
-     * @ORM\Column(name="reftype", type="string", length=200)
-     */
-    private $code;
-
-    /**
-     * @var Entity\Poll
-     *
-     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll")
-     * @ORM\JoinColumn(name="refid", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll\Relation")
+     * @ORM\JoinColumn(name="relationid", referencedColumnName="id")
      */
     private $poll;
 
     /**
-     * @var string SUM(Vote::$total)|SUM(Option::$total)
+     * One Vote has One Option.
+     *
+     * @var Entity\Option
+     *
+     * @ORM\OneToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Option", inversedBy="vote")
+     * @ORM\JoinColumn(name="optionid", referencedColumnName="id")
+     */
+    private $option;
+
+    /**
+     * @var integer
      *
      * @ORM\Column(name="total", type="integer", length=255)
      */
-    private $total = 0;
+    private $total = 1;
 
     /**
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param $code
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-        return $this;
-    }
-
-    /**
-     * @return Entity\Poll
+     * @return Entity\Poll\Relation
      */
     public function getPoll()
     {
@@ -78,17 +62,35 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param $poll
+     * @param Entity\Poll\Relation $poll
      * @return $this
      */
-    public function setPoll($poll)
+    public function setPoll(Entity\Poll\Relation $poll)
     {
         $this->poll = $poll;
         return $this;
     }
 
     /**
-     * @return string
+     * @return Entity\Option
+     */
+    public function getOption()
+    {
+        return $this->option;
+    }
+
+    /**
+     * @param Entity\Option $option
+     * @return $this
+     */
+    public function setOption(Entity\Option $option)
+    {
+        $this->option = $option;
+        return $this;
+    }
+
+    /**
+     * @return int
      */
     public function getTotal()
     {
@@ -103,21 +105,5 @@ class Relation extends Entity implements
     {
         $this->total = $total;
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSubject()
-    {
-        return $this->getPoll()->getSubject();
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getOptions()
-    {
-        return $this->getOptions()->getOptions();
     }
 }
