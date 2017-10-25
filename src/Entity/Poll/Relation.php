@@ -118,6 +118,6 @@ class Relation extends Entity implements
      */
     public function getOptions()
     {
-        return $this->getOptions()->getOptions();
+        return $this->getPoll()->getOptions();
     }
 }
