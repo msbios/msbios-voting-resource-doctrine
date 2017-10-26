@@ -7,8 +7,6 @@
 namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Resource\Doctrine\IdentifierableAwareInterface;
-use MSBios\Resource\Doctrine\IdentifierAwareTrait;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -24,6 +22,7 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
+ * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\VoteListener"})
  */
 class Vote extends Entity implements
     TimestampableAwareInterface,
