@@ -55,7 +55,7 @@ class Vote extends Entity implements
      *
      * @ORM\Column(name="total", type="integer", length=255)
      */
-    private $total = 1;
+    private $total = 0;
 
     /**
      * @return Poll
