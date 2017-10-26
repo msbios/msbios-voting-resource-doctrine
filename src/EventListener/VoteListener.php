@@ -22,6 +22,7 @@ class VoteListener
      */
     public function onPostUpdate(Vote $entity, LifecycleEventArgs $args)
     {
-        r($entity); die();
+        r($entity);
+        die();
     }
 }
