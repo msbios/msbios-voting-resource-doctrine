@@ -18,7 +18,11 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * @package MSBios\Voting\Resource\Doctrine\Entity\Vote
  *
  * @ORM\Entity
- * @ORM\Table(name="vot_t_vote_relations")
+ * @ORM\Table(name="vot_t_vote_relations",
+ *     indexes={
+ *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
+ *     )
+ * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\Vote\RelationListener"})
  */
 class Relation extends Entity implements
     TimestampableAwareInterface,

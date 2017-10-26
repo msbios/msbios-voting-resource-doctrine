@@ -3,31 +3,31 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace MSBios\Voting\Resource\Doctrine\EventListener;
+
+namespace MSBios\Voting\Resource\Doctrine\EventListener\Vote;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Voting\Resource\Doctrine\Entity\Poll;
-use MSBios\Voting\Resource\Doctrine\Entity\Vote;
+use MSBios\Voting\Resource\Doctrine\Entity;
 
 /**
- * Class VoteListener
- * @package MSBios\Voting\Resource\Doctrine\EventListener
+ * Class RelationListener
+ * @package MSBios\Voting\Resource\Doctrine\EventListener\Vote
  */
-class VoteListener
+class RelationListener
 {
     /**
-     * @param Vote $entity
+     * @param Entity\Vote\Relation $entity
      * @param LifecycleEventArgs $args
      * @ORM\PostUpdate
      */
-    public function onPostUpdate(Vote $entity, LifecycleEventArgs $args)
+    public function onPostUpdate(Entity\Vote\Relation $entity, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
 
-        /** @var Poll $poll */
+        /** @var Entity\Poll\Relation $poll */
         $poll = $entity->getPoll();
         $poll->setTotal(1 + $poll->getTotal());
 
