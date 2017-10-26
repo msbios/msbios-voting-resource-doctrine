@@ -13,9 +13,9 @@ use Zend\Loader\StandardAutoloader;
  * Class Module
  * @package MSBios\Voting\Resource\Doctrine
  */
-class Module implements ModuleInterface // , FormElementProviderInterface
+class Module implements ModuleInterface
 {
-    const VERSION = '1.0.12';
+    const VERSION = '1.0.13';
 
     /**
      * Returns configuration to merge with application configuration

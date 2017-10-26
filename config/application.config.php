@@ -37,7 +37,6 @@ return [
         'MSBios\Application',
         'MSBios\Resource',
         'MSBios\Resource\Doctrine',
-        // 'MSBios\Form\Doctrine',
 
         'MSBios\Voting\Resource\Doctrine',
     ],
