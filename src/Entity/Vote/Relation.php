@@ -41,7 +41,7 @@ class Relation extends Entity implements
      *
      * @var Entity\Option
      *
-     * @ORM\OneToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Option")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Option")
      * @ORM\JoinColumn(name="optionid", referencedColumnName="id")
      */
     private $option;
