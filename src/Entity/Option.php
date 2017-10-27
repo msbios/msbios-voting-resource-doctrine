@@ -56,6 +56,13 @@ class Option extends Entity implements
     private $total = 0;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="ponderability", type="integer", length=255)
+     */
+    private $ponderability = 0;
+
+    /**
      * @var integer (Option::$total/Poll::$total)*100
      *
      * @ORM\Column(name="percent", type="integer", length=255)
@@ -124,6 +131,22 @@ class Option extends Entity implements
     public function setTotal($total)
     {
         $this->total = $total;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPonderability(): int
+    {
+        return $this->ponderability;
+    }
+
+    /**
+     * @param int $ponderability
+     */
+    public function setPonderability(int $ponderability)
+    {
+        $this->ponderability = $ponderability;
     }
 
     /**

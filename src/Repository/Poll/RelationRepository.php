@@ -41,7 +41,8 @@ class RelationRepository extends EntityRepository
                         AND `pr`.`id` = `vr`.`relationid`
                 WHERE
                     `pr`.`id` = :identifier 
-                AND `pr`.`reftype` = :code';
+                    AND `pr`.`reftype` = :code
+                ORDER BY `o`.`priority` DESC';
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $stmt->execute([

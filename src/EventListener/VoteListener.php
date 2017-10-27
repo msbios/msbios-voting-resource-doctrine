@@ -17,6 +17,18 @@ use MSBios\Voting\Resource\Doctrine\Entity\Vote;
  */
 class VoteListener
 {
+
+    /**
+     * @param Vote $entity
+     * @param LifecycleEventArgs $args
+     */
+    public function onPreUpdate(Vote $entity, LifecycleEventArgs $args)
+    {
+        $entity->setComposition(
+            $entity->getTotal() * $entity->getOption()->getPonderability()
+        );
+    }
+
     /**
      * @param Vote $entity
      * @param LifecycleEventArgs $args

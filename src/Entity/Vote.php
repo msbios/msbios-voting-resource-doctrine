@@ -57,6 +57,13 @@ class Vote extends Entity implements
     private $total = 0;
 
     /**
+     * @var integer Vote::$total * Option::$ponderability
+     *
+     * @ORM\Column(name="composition", type="integer", length=255)
+     */
+    private $composition = 0;
+
+    /**
      * @return Poll
      */
     public function getPoll()
@@ -108,5 +115,21 @@ class Vote extends Entity implements
     {
         $this->total = $total;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getComposition(): int
+    {
+        return $this->composition;
+    }
+
+    /**
+     * @param int $composition
+     */
+    public function setComposition(int $composition)
+    {
+        $this->composition = $composition;
     }
 }

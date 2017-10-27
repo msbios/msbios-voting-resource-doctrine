@@ -54,6 +54,13 @@ class Poll extends Entity implements
     private $total = 0;
 
     /**
+     * @var string  // SUM(Vote::$total)|SUM(Option::$total)
+     *
+     * @ORM\Column(name="avg", type="decimal", precision=3, scale=2)
+     */
+    private $avg = 0;
+
+    /**
      * One Poll has Many Options.
      *
      * @var ArrayCollection

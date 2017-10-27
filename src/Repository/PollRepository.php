@@ -36,7 +36,8 @@ class PollRepository extends EntityRepository
                     `vot_t_votes` AS `v` ON `o`.`id` = `v`.`optionid` 
                         AND `o`.`pollid` = `v`.`pollid`
                 WHERE 
-                    `o`.`pollid` = :identifier';
+                    `o`.`pollid` = :identifier
+                ORDER BY `o`.`priority DESC`';
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
         $stmt->execute(['identifier' => $poll->getId()]);
