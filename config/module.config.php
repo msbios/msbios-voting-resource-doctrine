@@ -4,7 +4,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace MSBios\Voting\Resource\Doctrine;
+
+use MSBios\Doctrine\Initializer\ObjectManagerInitializer;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'doctrine' => [
@@ -26,5 +30,64 @@ return [
                 ],
             ],
         ],
+    ],
+
+    'controllers' => [
+        'factories' => [
+            Controller\PollController::class =>
+                InvokableFactory::class,
+            Controller\RelationController::class =>
+                InvokableFactory::class
+        ],
+        'initializers' => [
+            new ObjectManagerInitializer
+        ]
+    ],
+
+    'console' => [
+        'router' => [
+            'routes' => [
+                'polls' => [
+                    'options' => [
+                        // 'route' => 'show [all|disabled|deleted]:mode users [--verbose|-v]',
+                        'route' => 'polls',
+                        'defaults' => [
+                            'controller' => Controller\PollController::class,
+                            'action' => 'index'
+                        ]
+                    ]
+                ],
+                'poll-votes' => [
+                    'options' => [
+                        'route' => 'poll votes <pollid>',
+                        'defaults' => [
+                            'controller' => Controller\PollController::class,
+                            'action' => 'votes'
+                        ]
+                    ]
+                ],
+                'poll-relations' => [
+                    'options' => [
+                        // 'route' => 'show [all|disabled|deleted]:mode users [--verbose|-v]',
+                        'route' => 'poll-relations',
+                        'defaults' => [
+                            'controller' => Controller\RelationController::class,
+                            'action' => 'index'
+                        ]
+                    ]
+                ],
+
+                'poll-relation-votes' => [
+                    'options' => [
+                        // 'route' => 'show [all|disabled|deleted]:mode users [--verbose|-v]',
+                        'route' => 'poll-relation votes <pollid>',
+                        'defaults' => [
+                             'controller' => Controller\RelationController::class,
+                            'action' => 'votes'
+                        ]
+                    ]
+                ],
+            ]
+        ]
     ],
 ];

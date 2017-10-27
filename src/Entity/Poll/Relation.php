@@ -18,10 +18,11 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * Class Relation
  * @package MSBios\Voting\Resource\Doctrine\Entity\Poll
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MSBios\Voting\Resource\Doctrine\Repository\Poll\RelationRepository")
  * @ORM\Table(name="vot_t_poll_relations")
  */
 class Relation extends Entity implements
+    Entity\PollInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
     Entity\RelationInterface

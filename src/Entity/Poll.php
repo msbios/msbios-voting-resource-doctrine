@@ -18,13 +18,14 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * Class Poll
  * @package MSBios\Voting\Resource\Doctrine\Entity
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MSBios\Voting\Resource\Doctrine\Repository\PollRepository")
  * @ORM\Table(name="vot_t_polls",
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
  */
 class Poll extends Entity implements
+    PollInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface
 {
