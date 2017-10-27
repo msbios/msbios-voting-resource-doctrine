@@ -43,7 +43,6 @@
       "phpunit --colors=always"
     ],
     "alter": "./vendor/bin/doctrine-module orm:schema-tool:update --force",
-    "serve": "php -S 0.0.0.0:3107 -t bin bin/msbios-voting-resource-doctrine-module.php",
     "commit": "git add . && git commit -a -m \"Lazy Composer Commiter\" && git push",
     "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
     "upload-coverage": "coveralls -v"
