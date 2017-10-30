@@ -49,13 +49,6 @@ class Option extends Entity implements
     private $name;
 
     /**
-     * @var integer Vote::$total
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="ponderability", type="integer", length=255)
@@ -63,18 +56,25 @@ class Option extends Entity implements
     private $ponderability = 0;
 
     /**
-     * @var integer (Option::$total/Poll::$total)*100
-     *
-     * @ORM\Column(name="percent", type="integer", length=255)
-     */
-    private $percent = 0;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="integer", length=255)
      */
     private $priority = 1;
+
+    /**
+     * @var integer Vote::$total
+     *
+     * @ORM\Column(name="total", type="integer", length=255)
+     */
+    private $total = 0;
+
+    /**
+     * @var integer (Option::$total/Poll::$total)*100
+     *
+     * @ORM\Column(name="percent", type="integer", length=255)
+     */
+    private $percent = 0;
 
     /**
      * One Option has One Vote.
@@ -120,22 +120,6 @@ class Option extends Entity implements
     /**
      * @return int
      */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param int $total
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-    }
-
-    /**
-     * @return int
-     */
     public function getPonderability(): int
     {
         return $this->ponderability;
@@ -147,22 +131,6 @@ class Option extends Entity implements
     public function setPonderability(int $ponderability)
     {
         $this->ponderability = $ponderability;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPercent()
-    {
-        return $this->percent;
-    }
-
-    /**
-     * @param int $percent
-     */
-    public function setPercent($percent)
-    {
-        $this->percent = $percent;
     }
 
     /**
@@ -181,6 +149,38 @@ class Option extends Entity implements
     {
         $this->priority = $priority;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * @param int $total
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPercent()
+    {
+        return $this->percent;
+    }
+
+    /**
+     * @param int $percent
+     */
+    public function setPercent($percent)
+    {
+        $this->percent = $percent;
     }
 
     /**
