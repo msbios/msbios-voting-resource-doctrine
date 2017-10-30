@@ -7,7 +7,7 @@ namespace MSBios\Voting\Resource\Doctrine\Form\Element;
 
 use DoctrineModule\Form\Element\ObjectSelect;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use MSBios\Form\Doctrine\ObjectManagerAwareTrait;
+use MSBios\Doctrine\ObjectManagerAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 
 /**

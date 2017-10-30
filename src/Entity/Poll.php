@@ -126,6 +126,22 @@ class Poll extends Entity implements
     }
 
     /**
+     * @return string
+     */
+    public function getAvg(): string
+    {
+        return $this->avg;
+    }
+
+    /**
+     * @param string $avg
+     */
+    public function setAvg(string $avg)
+    {
+        $this->avg = $avg;
+    }
+
+    /**
      * @return ArrayCollection
      */
     public function getOptions()

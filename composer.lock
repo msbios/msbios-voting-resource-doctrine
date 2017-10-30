@@ -5861,16 +5861,16 @@
         },
         {
             "name": "zendframework/zend-test",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-test.git",
-                "reference": "9665205827ed6ee69f1ef82990362057c789250c"
+                "reference": "9976fb519851276d56e201bc6211b3a94e6c3b19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-test/zipball/9665205827ed6ee69f1ef82990362057c789250c",
-                "reference": "9665205827ed6ee69f1ef82990362057c789250c",
+                "url": "https://api.github.com/repos/zendframework/zend-test/zipball/9976fb519851276d56e201bc6211b3a94e6c3b19",
+                "reference": "9976fb519851276d56e201bc6211b3a94e6c3b19",
                 "shasum": ""
             },
             "require": {
@@ -5913,7 +5913,10 @@
             "autoload": {
                 "psr-4": {
                     "Zend\\Test\\": "src/"
-                }
+                },
+                "files": [
+                    "autoload/phpunit-class-aliases.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5924,7 +5927,7 @@
                 "test",
                 "zf2"
             ],
-            "time": "2017-05-01T19:54:00+00:00"
+            "time": "2017-10-29T16:35:35+00:00"
         },
         {
             "name": "zfcampus/zf-development-mode",
