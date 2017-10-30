@@ -44,6 +44,17 @@ return [
         ]
     ],
 
+    'form_elements' => [
+        'factories' => [
+            Form\OptionForm::class =>
+                InvokableFactory::class,
+        ],
+        'aliases' => [
+            \MSBios\Voting\Resource\Form\OptionForm::class =>
+                Form\OptionForm::class
+        ]
+    ],
+
     'console' => [
         'router' => [
             'routes' => [
