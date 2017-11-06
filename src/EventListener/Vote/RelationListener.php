@@ -31,9 +31,20 @@ class RelationListener
         /** @var Entity\Poll\Relation $poll */
         $poll = $entity->getPoll();
 
-        $result = $dem->createQueryBuilder()
+        /** @var int $total */
+        $total = $dem->createQueryBuilder()
             ->select('SUM(vr.total) as result')
             ->from(Entity\Vote\Relation::class, 'vr')
+            ->where('vr.poll = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        /** @var float $avg */
+        $avg = $dem->createQueryBuilder()
+            ->select('SUM((o.ponderability * vr.total)) AS result')
+            ->from(Entity\Vote\Relation::class, 'vr')
+            ->join(Entity\Option::class, 'o', 'WITH', 'o.id = vr.option')
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
@@ -42,7 +53,8 @@ class RelationListener
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Entity\Poll\Relation::class, 'pr')
-            ->set('pr.total', $qb->expr()->literal($result))
+            ->set('pr.total', $qb->expr()->literal($total))
+            ->set('pr.avg', $qb->expr()->literal($avg / $total))
             ->where('pr.id = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
@@ -51,7 +63,7 @@ class RelationListener
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Entity\Vote\Relation::class, 'vr')
-            ->set('vr.percent', "(100 / {$result} ) * vr.total")
+            ->set('vr.percent', "(100 / {$total} ) * vr.total")
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
