@@ -70,13 +70,6 @@ class Option extends Entity implements
     private $total = 0;
 
     /**
-     * @var integer (Option::$total/Poll::$total)*100
-     *
-     * @ORM\Column(name="percent", type="integer", length=255)
-     */
-    private $percent = 0;
-
-    /**
      * One Option has One Vote.
      *
      * @var Vote
@@ -166,8 +159,6 @@ class Option extends Entity implements
     {
         $this->total = $total;
     }
-
-
 
     /**
      * @return mixed
