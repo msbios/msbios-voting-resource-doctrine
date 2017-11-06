@@ -27,9 +27,8 @@ class PollRepository extends EntityRepository
                     `o`.`id`, 
                     `o`.`pollid`, 
                     `o`.`name`, 
-                    `o`.`total`, 
                     `o`.`percent`, 
-                    IF(`v`.`total` IS NULL, 0, `v`.`total`) AS `vote` 
+                    IF(`v`.`total` IS NULL, 0, `v`.`total`) AS `total` 
                 FROM 
                     `vot_t_options` AS `o` 
                         LEFT JOIN 
@@ -43,19 +42,6 @@ class PollRepository extends EntityRepository
         $stmt->execute(['identifier' => $poll->getId()]);
 
         return $stmt->fetchAll();
-
-        // /** @var Query $query */
-        // $query = $this->createNamedQuery($sql);
-
-        ///** @var QueryBuilder $qb */
-        //$qb = $this->createQueryBuilder('o');
-        //$qb->select([
-        //    'o.id',
-        //    'o.pollid',
-        //    'o.name',
-        //    'o.total',
-        //    'o.percent',
-        //])->leftJoin('o.Vote', 'v', Join::WITH, '');
         return [];
     }
 }
