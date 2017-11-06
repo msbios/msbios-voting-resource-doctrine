@@ -51,13 +51,7 @@ class Relation extends Entity implements
     private $option;
 
     use Entity\TotalTrait;
-
-    /**
-     * @var integer (Option::$total/Poll::$total)*100
-     *
-     * @ORM\Column(name="percent", type="integer", length=255)
-     */
-    private $percent = 0;
+    use Entity\PercentTrait;
 
     /**
      * @return Entity\Poll\Relation
@@ -93,21 +87,5 @@ class Relation extends Entity implements
     {
         $this->option = $option;
         return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPercent(): int
-    {
-        return $this->percent;
-    }
-
-    /**
-     * @param int $percent
-     */
-    public function setPercent(int $percent)
-    {
-        $this->percent = $percent;
     }
 }

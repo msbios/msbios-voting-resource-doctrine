@@ -14,9 +14,10 @@ trait PercentTrait
     /**
      * @var integer (Option::$total/Poll::$total)*100
      *
-     * @ORM\Column(name="percent", type="integer", length=255)
+     * -ORM\Column(name="percent", type="decimal", precision=3, scale=2)
+     * @ORM\Column(name="percent", type="float")
      */
-    private $percent = 0;
+    private $percent = 0.00;
 
     /**
      * @return int
