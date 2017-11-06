@@ -63,13 +63,6 @@ class Option extends Entity implements
     private $priority = 1;
 
     /**
-     * @var integer Vote::$total
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
-
-    /**
      * One Option has One Vote.
      *
      * @var Vote
@@ -142,22 +135,6 @@ class Option extends Entity implements
     {
         $this->priority = $priority;
         return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param int $total
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
     }
 
     /**
