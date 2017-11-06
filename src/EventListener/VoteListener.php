@@ -8,6 +8,7 @@ namespace MSBios\Voting\Resource\Doctrine\EventListener;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote;
 
@@ -41,9 +42,31 @@ class VoteListener
 
         /** @var Poll $poll */
         $poll = $entity->getPoll();
-        $poll->setTotal(1 + $poll->getTotal());
 
-        $dem->merge($poll);
-        $dem->flush();
+        $result = $dem->createQueryBuilder()
+            ->select('SUM(v.total) as result')
+            ->from(Vote::class, 'v')
+            ->where('v.poll = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        /** @var QueryBuilder $qb */
+        $qb = $dem->createQueryBuilder();
+        $qb->update(Poll::class, 'p')
+            ->set('p.total', $qb->expr()->literal($result))
+            ->where('p.id = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->execute();
+
+        /** @var QueryBuilder $qb */
+        $qb = $dem->createQueryBuilder();
+        $qb->update(Vote::class, 'v')
+            ->set('v.percent', "(100 / {$result} ) * v.total")
+            ->where('v.poll = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->execute();
     }
 }

@@ -39,6 +39,16 @@ class Vote extends Entity implements
      */
     private $poll;
 
+    use TotalTrait;
+    use PercentTrait;
+
+    /**
+     * @var integer Vote::$total * Option::$ponderability
+     *
+     * @ORM\Column(name="composition", type="integer", length=255)
+     */
+    private $composition = 0;
+
     /**
      * One Vote has One Option.
      *
@@ -49,19 +59,6 @@ class Vote extends Entity implements
      */
     private $option;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
-
-    /**
-     * @var integer Vote::$total * Option::$ponderability
-     *
-     * @ORM\Column(name="composition", type="integer", length=255)
-     */
-    private $composition = 0;
 
     /**
      * @return Poll
@@ -82,6 +79,22 @@ class Vote extends Entity implements
     }
 
     /**
+     * @return int
+     */
+    public function getComposition(): int
+    {
+        return $this->composition;
+    }
+
+    /**
+     * @param int $composition
+     */
+    public function setComposition(int $composition)
+    {
+        $this->composition = $composition;
+    }
+
+    /**
      * @return Option
      */
     public function getOption()
@@ -97,39 +110,5 @@ class Vote extends Entity implements
     {
         $this->option = $option;
         return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param $total
-     * @return $this
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getComposition(): int
-    {
-        return $this->composition;
-    }
-
-    /**
-     * @param int $composition
-     */
-    public function setComposition(int $composition)
-    {
-        $this->composition = $composition;
     }
 }
