@@ -16,7 +16,7 @@ trait AvgTrait
     /**
      * @var float  // SUM(Vote::$total)|SUM(Option::$total)
      *
-     * @ORM\Column(name="avg", type="decimal", precision=3, scale=2)
+     * @ORM\Column(name="avg", type="float")
      */
     private $avg = 0.00;
 
