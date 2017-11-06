@@ -35,7 +35,7 @@ class RelationListener
             ->select('SUM(vr.total) as result')
             ->from(Entity\Vote\Relation::class, 'vr')
             ->where('vr.poll = :poll')
-            ->setParameter('poll', $entity->getPoll())
+            ->setParameter('poll', $poll)
             ->getQuery()
             ->getSingleScalarResult();
 
@@ -44,6 +44,15 @@ class RelationListener
         $qb->update(Entity\Poll\Relation::class, 'pr')
             ->set('pr.total', $qb->expr()->literal($result))
             ->where('pr.id = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->execute();
+
+        /** @var QueryBuilder $qb */
+        $qb = $dem->createQueryBuilder();
+        $qb->update(Entity\Vote\Relation::class, 'vr')
+            ->set('vr.percent', "(100/{$result})*vr.total")
+            ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
             ->execute();
