@@ -23,6 +23,7 @@ class VoteListener
     /**
      * @param Vote $entity
      * @param LifecycleEventArgs $args
+     * @ORM\PreUpdate
      */
     public function onPreUpdate(Vote $entity, LifecycleEventArgs $args)
     {
@@ -71,7 +72,7 @@ class VoteListener
         $qb = $dem->createQueryBuilder();
         $qb->update(Poll::class, 'p')
             ->set('p.total', $qb->expr()->literal($total))
-            ->set('p.avg', $qb->expr()->literal($avg/$total))
+            ->set('p.avg', $qb->expr()->literal($avg / $total))
             ->where('p.id = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
