@@ -52,6 +52,8 @@ class Relation extends Entity implements
      */
     private $total = 0;
 
+    use Entity\AvgTrait;
+
     /**
      * @return string
      */

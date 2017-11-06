@@ -58,6 +58,13 @@ class Relation extends Entity implements
     private $total = 0;
 
     /**
+     * @var integer (Option::$total/Poll::$total)*100
+     *
+     * @ORM\Column(name="percent", type="integer", length=255)
+     */
+    private $percent = 0;
+
+    /**
      * @return Entity\Poll\Relation
      */
     public function getPoll()
@@ -109,5 +116,21 @@ class Relation extends Entity implements
     {
         $this->total = $total;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPercent(): int
+    {
+        return $this->percent;
+    }
+
+    /**
+     * @param int $percent
+     */
+    public function setPercent(int $percent)
+    {
+        $this->percent = $percent;
     }
 }

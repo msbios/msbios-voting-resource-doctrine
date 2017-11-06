@@ -53,12 +53,7 @@ class Poll extends Entity implements
      */
     private $total = 0;
 
-    /**
-     * @var string  // SUM(Vote::$total)|SUM(Option::$total)
-     *
-     * @ORM\Column(name="avg", type="decimal", precision=3, scale=2)
-     */
-    private $avg = 0;
+    use AvgTrait;
 
     /**
      * One Poll has Many Options.
@@ -125,21 +120,7 @@ class Poll extends Entity implements
         $this->total = $total;
     }
 
-    /**
-     * @return string
-     */
-    public function getAvg(): string
-    {
-        return $this->avg;
-    }
 
-    /**
-     * @param string $avg
-     */
-    public function setAvg(string $avg)
-    {
-        $this->avg = $avg;
-    }
 
     /**
      * @return ArrayCollection
