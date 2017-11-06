@@ -46,13 +46,7 @@ class Poll extends Entity implements
      */
     private $subject;
 
-    /**
-     * @var string SUM(Vote::$total)|SUM(Option::$total)
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
-
+    use TotalTrait;
     use AvgTrait;
 
     /**
@@ -75,7 +69,7 @@ class Poll extends Entity implements
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -83,7 +77,7 @@ class Poll extends Entity implements
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode($code)
     {
         $this->code = $code;
     }
@@ -103,24 +97,6 @@ class Poll extends Entity implements
     {
         $this->subject = $subject;
     }
-
-    /**
-     * @return string
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param string $total
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-    }
-
-
 
     /**
      * @return ArrayCollection

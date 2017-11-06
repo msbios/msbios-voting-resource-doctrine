@@ -167,21 +167,7 @@ class Option extends Entity implements
         $this->total = $total;
     }
 
-    /**
-     * @return int
-     */
-    public function getPercent()
-    {
-        return $this->percent;
-    }
 
-    /**
-     * @param int $percent
-     */
-    public function setPercent($percent)
-    {
-        $this->percent = $percent;
-    }
 
     /**
      * @return mixed

@@ -5,6 +5,8 @@
  */
 namespace MSBios\Voting\Resource\Doctrine\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Trait AvgTrait
  * @package MSBios\Voting\Resource\Doctrine\Entity

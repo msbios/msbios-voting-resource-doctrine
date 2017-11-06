@@ -50,12 +50,7 @@ class Relation extends Entity implements
      */
     private $option;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
+    use Entity\TotalTrait;
 
     /**
      * @var integer (Option::$total/Poll::$total)*100
@@ -97,24 +92,6 @@ class Relation extends Entity implements
     public function setOption(Entity\Option $option)
     {
         $this->option = $option;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param $total
-     * @return $this
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
         return $this;
     }
 

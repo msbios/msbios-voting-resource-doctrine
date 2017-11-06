@@ -25,11 +25,8 @@ class RelationRepository extends EntityRepository
                     `o`.`id`,
                     `o`.`pollid`,
                     `o`.`name`,
-                    `o`.`total`,
-                    `o`.`percent`,
-                    IF(`vr`.`total` IS NULL,
-                        0,
-                        `vr`.`total`) AS `vote`
+                    IF(`vr`.`percent` IS NULL, 0, `vr`.`percent`) AS `percent`
+                    IF(`vr`.`total` IS NULL, 0, `vr`.`total`) AS `total`
                 FROM
                     `vot_t_poll_relations` AS `pr`
                         INNER JOIN

@@ -45,13 +45,7 @@ class Relation extends Entity implements
      */
     private $poll;
 
-    /**
-     * @var string SUM(Vote::$total)|SUM(Option::$total)
-     *
-     * @ORM\Column(name="total", type="integer", length=255)
-     */
-    private $total = 0;
-
+    use Entity\TotalTrait;
     use Entity\AvgTrait;
 
     /**
@@ -87,24 +81,6 @@ class Relation extends Entity implements
     public function setPoll($poll)
     {
         $this->poll = $poll;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param $total
-     * @return $this
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
         return $this;
     }
 

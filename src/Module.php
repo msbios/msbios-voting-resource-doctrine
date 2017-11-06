@@ -16,7 +16,7 @@ use Zend\Loader\StandardAutoloader;
 class Module implements ModuleInterface
 {
     /** @const VERSIOn */
-    const VERSION = '1.0.22';
+    const VERSION = '1.0.23';
 
     /**
      * Returns configuration to merge with application configuration
