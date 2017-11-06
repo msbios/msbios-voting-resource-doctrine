@@ -19,7 +19,6 @@ use MSBios\Voting\Resource\Doctrine\Entity\Vote;
  */
 class VoteListener
 {
-
     /**
      * @param Vote $entity
      * @param LifecycleEventArgs $args
@@ -27,10 +26,6 @@ class VoteListener
      */
     public function onPreUpdate(Vote $entity, LifecycleEventArgs $args)
     {
-        // $entity->setComposition(
-        //     $entity->getTotal() * $entity->getOption()->getPonderability()
-        // );
-
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
 
@@ -38,8 +33,8 @@ class VoteListener
         $qb = $dem->createQueryBuilder();
         $qb->update(Vote::class, 'v')
             ->join(Option::class, 'o', 'WITH', 'o.id = v.option')
-            ->set('p.total', 'o.ponderability * v.total')
-            ->where('p.id = :poll')
+            ->set('v.composition', $qb->expr()->literal('o.ponderability * v.total')) // fix it
+            ->where('v.poll = :poll')
             ->setParameter('poll', $entity->getPoll())
             ->getQuery()
             ->execute();
@@ -66,10 +61,6 @@ class VoteListener
             ->setParameter('poll', $poll)
             ->getQuery()
             ->getSingleScalarResult();
-
-
-        // SELECT SUM((`o`.`ponderability`*`v`.`total`)) as `qw`  FROM `vot_t_votes` as `v`
-        // JOIN `vot_t_options` as `o` ON `o`.`id` = `v`.`optionid`
 
         /** @var float $avg */
         $avg = $dem->createQueryBuilder()
