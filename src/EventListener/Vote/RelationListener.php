@@ -28,30 +28,24 @@ class RelationListener
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
 
-        $result = $dem->createQueryBuilder('vr')
+        /** @var Entity\Poll\Relation $poll */
+        $poll = $entity->getPoll();
+
+        $result = $dem->createQueryBuilder()
             ->select('SUM(vr.total) as result')
-            ->andWhere('vr.poll = :poll')
+            ->from(Entity\Vote\Relation::class, 'vr')
+            ->where('vr.poll = :poll')
             ->setParameter('poll', $entity->getPoll())
             ->getQuery()
-            // ->getOneOrNullResult();
             ->getSingleScalarResult();
 
-        var_dump($result); die();
-
-        //$qb = $dem->createQueryBuilder();
-        //$q = $qb->update(Entity\Poll\Relation::class, 'pr');
-        ////    ->set('u.username', $qb->expr()->literal($username))
-        ////    ->set('u.email', $qb->expr()->literal($email))
-        ////    ->where('u.id = ?1')
-        ////    ->setParameter(1, $editId)
-        ////    ->getQuery();
-        ////$p = $q->execute();
-        //
-        /////** @var Entity\Poll\Relation $poll */
-        ////$poll = $entity->getPoll();
-        ////$poll->setTotal(1 + $poll->getTotal());
-        ////
-        ////$dem->merge($poll);
-        ////$dem->flush();
+        /** @var QueryBuilder $qb */
+        $qb = $dem->createQueryBuilder();
+        $qb->update(Entity\Poll\Relation::class, 'pr')
+            ->set('pr.total', $qb->expr()->literal($result))
+            ->where('pr.id = :poll')
+            ->setParameter('poll', $poll)
+            ->getQuery()
+            ->execute();
     }
 }
