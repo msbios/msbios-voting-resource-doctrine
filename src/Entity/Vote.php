@@ -59,7 +59,6 @@ class Vote extends Entity implements
      */
     private $option;
 
-
     /**
      * @return Poll
      */

@@ -27,7 +27,7 @@ class PollRepository extends EntityRepository
                     `o`.`id`, 
                     `o`.`pollid`, 
                     `o`.`name`, 
-                    `o`.`percent`, 
+                    `v`.`percent`, 
                     IF(`v`.`total` IS NULL, 0, `v`.`total`) AS `total` 
                 FROM 
                     `vot_t_options` AS `o` 
