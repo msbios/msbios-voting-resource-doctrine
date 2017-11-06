@@ -51,7 +51,7 @@ class RelationListener
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Entity\Vote\Relation::class, 'vr')
-            ->set('vr.percent', "(100/{$result})*vr.total")
+            ->set('vr.percent', "(100 / {$result} ) * vr.total")
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
