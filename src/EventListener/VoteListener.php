@@ -27,9 +27,22 @@ class VoteListener
      */
     public function onPreUpdate(Vote $entity, LifecycleEventArgs $args)
     {
-        $entity->setComposition(
-            $entity->getTotal() * $entity->getOption()->getPonderability()
-        );
+        // $entity->setComposition(
+        //     $entity->getTotal() * $entity->getOption()->getPonderability()
+        // );
+
+        /** @var ObjectManager $dem */
+        $dem = $args->getObjectManager();
+
+        /** @var QueryBuilder $qb */
+        $qb = $dem->createQueryBuilder();
+        $qb->update(Vote::class, 'v')
+            ->join(Option::class, 'o', 'WITH', 'o.id = v.option')
+            ->set('p.total', 'o.ponderability * v.total')
+            ->where('p.id = :poll')
+            ->setParameter('poll', $entity->getPoll())
+            ->getQuery()
+            ->execute();
     }
 
     /**
