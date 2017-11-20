@@ -21,7 +21,7 @@ class PollSelect extends ObjectSelect implements ObjectManagerAwareInterface
     public function init()
     {
         $this->getProxy()->setOptions([
-            'object_manager' => $this->objectManager,
+            'object_manager' => $this->getObjectManager(),
             'target_class' => Poll::class,
             'property' => 'subject',
             'display_empty_item' => true,
