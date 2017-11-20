@@ -48,6 +48,8 @@ return [
         'factories' => [
             Form\OptionForm::class =>
                 InvokableFactory::class,
+            Form\Element\PollSelect::class,
+                InvokableFactory::class
         ],
         'aliases' => [
             \MSBios\Voting\Resource\Form\OptionForm::class =>
