@@ -40,6 +40,8 @@ class RelationListener
             ->getQuery()
             ->getSingleScalarResult();
 
+        $poll->setTotal($total);
+
         /** @var float $avg */
         $avg = $dem->createQueryBuilder()
             ->select('SUM((o.ponderability * vr.total)) AS result')
@@ -50,11 +52,13 @@ class RelationListener
             ->getQuery()
             ->getSingleScalarResult();
 
+        $poll->setAvg($avg / $poll->getTotal());
+
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Entity\Poll\Relation::class, 'pr')
-            ->set('pr.total', $qb->expr()->literal($total))
-            ->set('pr.avg', $qb->expr()->literal($avg / $total))
+            ->set('pr.total', $qb->expr()->literal($poll->getTotal()))
+            ->set('pr.avg', $qb->expr()->literal($poll->getAvg()))
             ->where('pr.id = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
