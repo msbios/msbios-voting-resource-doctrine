@@ -29,6 +29,15 @@ return [
                     Entity::class => Module::class,
                 ],
             ],
+            'entity_resolver' => [
+                'orm_default' => [
+                    'resolvers' => [
+                        // \MSBios\Guard\Resource\Doctrine\UserInterface::class =>
+                        //     Entity\User::class
+                    ],
+                ],
+            ],
+
         ],
     ],
 
