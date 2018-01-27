@@ -32,8 +32,8 @@ return [
             'entity_resolver' => [
                 'orm_default' => [
                     'resolvers' => [
-                        // \MSBios\Guard\Resource\Doctrine\UserInterface::class =>
-                        //     Entity\User::class
+                        Entity\PollInterface::class =>
+                            Entity\Poll::class
                     ],
                 ],
             ],

@@ -26,11 +26,12 @@
   "require": {
     "zendframework/zend-console": "^2.6",
     "zendframework/zend-mvc-console": "^1.1",
-    "msbios/resource-doctrine": "^1.0",
-    "msbios/voting-resource": "^1.0"
+    "msbios/voting-resource": "^1.0",
+    "msbios/resource-doctrine": "^1.0"
   },
   "require-dev": {
     "msbios/application": "^1.0",
+    "msbios/resource": "^1.0",
     "msbios/debug": "^1.0",
     "msbios/test": "^1.0"
   },
