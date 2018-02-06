@@ -33,7 +33,7 @@ class Relation extends Entity implements
     /**
      * @var string
      *
-     * @ORM\Column(name="reftype", type="string", length=200)
+     * @ORM\Column(name="relation", type="string", length=200)
      */
     private $code;
 
@@ -41,7 +41,7 @@ class Relation extends Entity implements
      * @var Entity\Poll
      *
      * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll")
-     * @ORM\JoinColumn(name="refid", referencedColumnName="id")
+     * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
      */
     private $poll;
 

@@ -25,6 +25,7 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\Vote\RelationListener"})
  */
 class Relation extends Entity implements
+    Entity\VoteInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
     Entity\RelationInterface
@@ -33,7 +34,7 @@ class Relation extends Entity implements
     use RowStatusableAwareTrait;
 
     /**
-     * @var Entity\Poll\Relation
+     * @var Entity\PollInterface
      *
      * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll\Relation")
      * @ORM\JoinColumn(name="relationid", referencedColumnName="id")
@@ -43,7 +44,7 @@ class Relation extends Entity implements
     /**
      * One Vote has One Option.
      *
-     * @var Entity\Option
+     * @var Entity\OptionInterface
      *
      * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Option")
      * @ORM\JoinColumn(name="optionid", referencedColumnName="id")
@@ -54,7 +55,7 @@ class Relation extends Entity implements
     use Entity\PercentTrait;
 
     /**
-     * @return Entity\Poll\Relation
+     * @return Entity\PollInterface
      */
     public function getPoll()
     {
@@ -62,17 +63,17 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param Entity\Poll\Relation $poll
+     * @param Entity\PollInterface $poll
      * @return $this
      */
-    public function setPoll(Entity\Poll\Relation $poll)
+    public function setPoll(Entity\PollInterface $poll)
     {
         $this->poll = $poll;
         return $this;
     }
 
     /**
-     * @return Entity\Option
+     * @return Entity\OptionInterface
      */
     public function getOption()
     {
@@ -80,10 +81,10 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param Entity\Option $option
+     * @param Entity\OptionInterface $option
      * @return $this
      */
-    public function setOption(Entity\Option $option)
+    public function setOption(Entity\OptionInterface $option)
     {
         $this->option = $option;
         return $this;

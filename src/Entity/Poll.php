@@ -61,8 +61,9 @@ class Poll extends Entity implements
     /**
      * Poll constructor.
      */
-    public function __construct()
+    public function init()
     {
+        parent::init();
         $this->options = new ArrayCollection;
     }
 
@@ -75,11 +76,13 @@ class Poll extends Entity implements
     }
 
     /**
-     * @param string $code
+     * @param $code
+     * @return $this
      */
     public function setCode($code)
     {
         $this->code = $code;
+        return $this;
     }
 
     /**
@@ -91,11 +94,13 @@ class Poll extends Entity implements
     }
 
     /**
-     * @param string $subject
+     * @param $subject
+     * @return $this
      */
     public function setSubject($subject)
     {
         $this->subject = $subject;
+        return $this;
     }
 
     /**
@@ -107,10 +112,10 @@ class Poll extends Entity implements
     }
 
     /**
-     * @param $options
+     * @param ArrayCollection $options
      * @return $this
      */
-    public function setOptions($options)
+    public function setOptions(ArrayCollection $options)
     {
         $this->options = $options;
         return $this;

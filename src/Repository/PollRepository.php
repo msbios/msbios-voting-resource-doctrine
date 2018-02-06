@@ -42,6 +42,5 @@ class PollRepository extends EntityRepository
         $stmt->execute(['identifier' => $poll->getId()]);
 
         return $stmt->fetchAll();
-        return [];
     }
 }

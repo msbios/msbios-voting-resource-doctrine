@@ -7,8 +7,6 @@
 namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Resource\Doctrine\IdentifierableAwareInterface;
-use MSBios\Resource\Doctrine\IdentifierAwareTrait;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -26,6 +24,7 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  *     )
  */
 class Option extends Entity implements
+    OptionInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface
 {
@@ -33,7 +32,7 @@ class Option extends Entity implements
     use RowStatusableAwareTrait;
 
     /**
-     * @var Poll
+     * @var PollInterface
      *
      * @ORM\ManyToOne(targetEntity="Poll")
      * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
@@ -65,14 +64,14 @@ class Option extends Entity implements
     /**
      * One Option has One Vote.
      *
-     * @var Vote
+     * @var VoteInterface
      *
      * @ORM\OneToOne(targetEntity="Vote", mappedBy="option")
      */
     private $vote;
 
     /**
-     * @return Poll
+     * @return PollInterface
      */
     public function getPoll()
     {
@@ -80,11 +79,13 @@ class Option extends Entity implements
     }
 
     /**
-     * @param Poll $poll
+     * @param PollInterface $poll
+     * @return $this
      */
-    public function setPoll($poll)
+    public function setPoll(PollInterface $poll)
     {
         $this->poll = $poll;
+        return $this;
     }
 
     /**
@@ -96,11 +97,13 @@ class Option extends Entity implements
     }
 
     /**
-     * @param string $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -113,10 +116,12 @@ class Option extends Entity implements
 
     /**
      * @param int $ponderability
+     * @return $this
      */
     public function setPonderability(int $ponderability)
     {
         $this->ponderability = $ponderability;
+        return $this;
     }
 
     /**
@@ -138,7 +143,7 @@ class Option extends Entity implements
     }
 
     /**
-     * @return mixed
+     * @return VoteInterface
      */
     public function getVote()
     {
@@ -146,10 +151,12 @@ class Option extends Entity implements
     }
 
     /**
-     * @param mixed $vote
+     * @param VoteInterface $vote
+     * @return $this
      */
-    public function setVote($vote)
+    public function setVote(VoteInterface $vote)
     {
         $this->vote = $vote;
+        return $this;
     }
 }

@@ -26,13 +26,14 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  */
 class Vote extends Entity implements
     TimestampableAwareInterface,
-    RowStatusableAwareInterface
+    RowStatusableAwareInterface,
+    VoteInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
 
     /**
-     * @var Poll
+     * @var PollInterface
      *
      * @ORM\ManyToOne(targetEntity="Poll")
      * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
@@ -52,7 +53,7 @@ class Vote extends Entity implements
     /**
      * One Vote has One Option.
      *
-     * @var Option
+     * @var OptionInterface
      *
      * @ORM\OneToOne(targetEntity="Option", inversedBy="vote")
      * @ORM\JoinColumn(name="optionid", referencedColumnName="id")
@@ -60,7 +61,7 @@ class Vote extends Entity implements
     private $option;
 
     /**
-     * @return Poll
+     * @return PollInterface
      */
     public function getPoll()
     {
@@ -68,10 +69,10 @@ class Vote extends Entity implements
     }
 
     /**
-     * @param Poll $poll
+     * @param PollInterface $poll
      * @return $this
      */
-    public function setPoll(Poll $poll)
+    public function setPoll(PollInterface $poll)
     {
         $this->poll = $poll;
         return $this;
@@ -94,7 +95,7 @@ class Vote extends Entity implements
     }
 
     /**
-     * @return Option
+     * @return OptionInterface
      */
     public function getOption()
     {
@@ -102,10 +103,10 @@ class Vote extends Entity implements
     }
 
     /**
-     * @param Option $option
+     * @param OptionInterface $option
      * @return $this
      */
-    public function setOption(Option $option)
+    public function setOption(OptionInterface $option)
     {
         $this->option = $option;
         return $this;

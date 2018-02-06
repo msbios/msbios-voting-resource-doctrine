@@ -6,7 +6,6 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
-        'MSBios\Db',
         'Zend\Db',
         'Zend\Router',
         'Zend\Mvc\Console',
@@ -14,6 +13,7 @@ return [
         'DoctrineModule',
         'DoctrineORMModule',
 
+        'MSBios\Db',
         'MSBios\Doctrine',
         'MSBios\Resource',
         'MSBios\Resource\Doctrine',

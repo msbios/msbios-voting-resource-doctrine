@@ -12,5 +12,14 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
  */
 interface PollInterface
 {
+    /**
+     * @return string
+     */
+    public function getCode();
 
+    /**
+     * @param $code
+     * @return $this
+     */
+    public function setCode($code);
 }
