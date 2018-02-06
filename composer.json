@@ -1,7 +1,7 @@
 {
   "name": "msbios/voting-resource-doctrine",
   "description": "MSBios Voting Resource Doctrine",
-  "license": "GPL",
+  "license": "MIT",
   "keywords": [
     "php"
   ],
