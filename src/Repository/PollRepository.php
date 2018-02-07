@@ -6,7 +6,6 @@
 
 namespace MSBios\Voting\Resource\Doctrine\Repository;
 
-
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
