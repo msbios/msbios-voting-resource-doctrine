@@ -8,7 +8,9 @@
 namespace MSBios\Voting\Resource\Doctrine;
 
 use MSBios\Doctrine\Initializer\ObjectManagerInitializer;
+use MSBios\Voting\Resource\Record\OptionInterface;
 use MSBios\Voting\Resource\Record\PollInterface;
+use MSBios\Voting\Resource\Record\VoteInterface;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -34,7 +36,11 @@ return [
                 'orm_default' => [
                     'resolvers' => [
                         PollInterface::class =>
-                            Entity\Poll::class
+                            Entity\Poll::class,
+                        OptionInterface::class =>
+                            Entity\Option::class,
+                        VoteInterface::class =>
+                            Entity\Vote::class
                     ],
                 ],
             ],
