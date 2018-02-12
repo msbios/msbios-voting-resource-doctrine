@@ -7,6 +7,7 @@
 namespace MSBios\Voting\Resource\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 
 /**
@@ -15,6 +16,24 @@ use MSBios\Voting\Resource\Doctrine\Entity\Poll;
  */
 class PollRepository extends EntityRepository
 {
+    /**
+     * @param mixed $id
+     * @param null $lockMode
+     * @param null $lockVersion
+     * @return mixed|null|object
+     */
+    public function find($id, $lockMode = null, $lockVersion = null)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id = :identifier')
+            ->orWhere('p.code = :identifier')
+            ->setMaxResults(1)
+            ->setParameter('identifier', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
     /**
      * @todo: => $queryBuilder
      * @param Poll $poll

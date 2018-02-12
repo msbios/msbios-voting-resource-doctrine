@@ -52,7 +52,7 @@ class RelationListener
             ->getQuery()
             ->getSingleScalarResult();
 
-        $poll->setAvg($avg / $poll->getTotal());
+        $poll->setAvg($total ? $avg / $poll->getTotal() : 0);
 
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
