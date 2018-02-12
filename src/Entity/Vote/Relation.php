@@ -12,6 +12,10 @@ use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
 use MSBios\Resource\Doctrine\TimestampableAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity;
+use MSBios\Voting\Resource\Record\OptionInterface;
+use MSBios\Voting\Resource\Record\PollInterface;
+use MSBios\Voting\Resource\Record\RelationInterface;
+use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
  * Class Relation
@@ -25,16 +29,16 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\Vote\RelationListener"})
  */
 class Relation extends Entity implements
-    Entity\VoteInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
-    Entity\RelationInterface
+    VoteInterface,
+    RelationInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
 
     /**
-     * @var Entity\PollInterface
+     * @var PollInterface
      *
      * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll\Relation")
      * @ORM\JoinColumn(name="relationid", referencedColumnName="id")
@@ -44,7 +48,7 @@ class Relation extends Entity implements
     /**
      * One Vote has One Option.
      *
-     * @var Entity\OptionInterface
+     * @var OptionInterface
      *
      * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Option")
      * @ORM\JoinColumn(name="optionid", referencedColumnName="id")
@@ -55,7 +59,7 @@ class Relation extends Entity implements
     use Entity\PercentTrait;
 
     /**
-     * @return Entity\PollInterface
+     * @return PollInterface
      */
     public function getPoll()
     {
@@ -63,17 +67,17 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param Entity\PollInterface $poll
+     * @param PollInterface $poll
      * @return $this
      */
-    public function setPoll(Entity\PollInterface $poll)
+    public function setPoll(PollInterface $poll)
     {
         $this->poll = $poll;
         return $this;
     }
 
     /**
-     * @return Entity\OptionInterface
+     * @return OptionInterface
      */
     public function getOption()
     {
@@ -81,10 +85,10 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param Entity\OptionInterface $option
+     * @param OptionInterface $option
      * @return $this
      */
-    public function setOption(Entity\OptionInterface $option)
+    public function setOption(OptionInterface $option)
     {
         $this->option = $option;
         return $this;

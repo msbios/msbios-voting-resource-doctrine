@@ -13,6 +13,7 @@ use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
 use MSBios\Resource\Doctrine\TimestampableAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity;
+use MSBios\Voting\Resource\Record\PollInterface;
 
 /**
  * Class Poll
@@ -25,9 +26,9 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  *     )
  */
 class Poll extends Entity implements
-    PollInterface,
     TimestampableAwareInterface,
-    RowStatusableAwareInterface
+    RowStatusableAwareInterface,
+    PollInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;

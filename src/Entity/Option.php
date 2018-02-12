@@ -12,6 +12,9 @@ use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
 use MSBios\Resource\Doctrine\TimestampableAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity;
+use MSBios\Voting\Resource\Record\OptionInterface;
+use MSBios\Voting\Resource\Record\PollInterface;
+use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
  * Class Option
@@ -24,9 +27,9 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  *     )
  */
 class Option extends Entity implements
-    OptionInterface,
     TimestampableAwareInterface,
-    RowStatusableAwareInterface
+    RowStatusableAwareInterface,
+    OptionInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;

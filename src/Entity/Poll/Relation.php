@@ -13,6 +13,8 @@ use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
 use MSBios\Resource\Doctrine\TimestampableAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity;
+use MSBios\Voting\Resource\Record\PollInterface;
+use MSBios\Voting\Resource\Record\RelationInterface;
 
 /**
  * Class Relation
@@ -22,10 +24,10 @@ use MSBios\Voting\Resource\Doctrine\Entity;
  * @ORM\Table(name="vot_t_poll_relations")
  */
 class Relation extends Entity implements
-    Entity\PollInterface,
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
-    Entity\RelationInterface
+    PollInterface,
+    RelationInterface
 {
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
