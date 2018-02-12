@@ -1408,16 +1408,16 @@
         },
         {
             "name": "msbios/voting-resource",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-voting-resource.git",
-                "reference": "177c26157d51f24b1761dae75acd8561c410349d"
+                "reference": "78b4a3e2473eba2e96f5ee05cd36439a9f814938"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-voting-resource/zipball/177c26157d51f24b1761dae75acd8561c410349d",
-                "reference": "177c26157d51f24b1761dae75acd8561c410349d",
+                "url": "https://api.github.com/repos/msbios/msbios-voting-resource/zipball/78b4a3e2473eba2e96f5ee05cd36439a9f814938",
+                "reference": "78b4a3e2473eba2e96f5ee05cd36439a9f814938",
                 "shasum": ""
             },
             "require": {
@@ -1452,7 +1452,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-02-12T13:09:13+00:00"
+            "time": "2018-02-12T17:38:50+00:00"
         },
         {
             "name": "psr/container",
