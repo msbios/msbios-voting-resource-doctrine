@@ -26,6 +26,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
  * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\VoteListener"})
+ * @ORM\MappedSuperclass
  */
 class Vote extends Entity implements
     TimestampableAwareInterface,

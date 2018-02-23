@@ -21,11 +21,11 @@ use MSBios\Voting\Resource\Record\VoteInterface;
 class VoteListener
 {
     /**
-     * @param VoteInterface $entity
+     * @param VoteInterface $vote
      * @param LifecycleEventArgs $args
      * @ORM\PreUpdate
      */
-    public function onPreUpdate(VoteInterface $entity, LifecycleEventArgs $args)
+    public function onPreUpdate(VoteInterface $vote, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
@@ -36,7 +36,7 @@ class VoteListener
             ->join(Option::class, 'o', 'WITH', 'o.id = v.option')
             ->set('v.composition', $qb->expr()->literal('o.ponderability * v.total')) // fix it
             ->where('v.poll = :poll')
-            ->setParameter('poll', $entity->getPoll())
+            ->setParameter('poll', $vote->getPoll())
             ->getQuery()
             ->execute();
     }
