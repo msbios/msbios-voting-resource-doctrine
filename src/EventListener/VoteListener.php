@@ -72,11 +72,13 @@ class VoteListener
             ->getQuery()
             ->getSingleScalarResult();
 
+        $poll->setAvg($total ? $avg / $poll->getTotal() : 0);
+
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Poll::class, 'p')
-            ->set('p.total', $qb->expr()->literal($total))
-            ->set('p.avg', $qb->expr()->literal($avg / $total))
+            ->set('p.total', $qb->expr()->literal($poll->getTotal()))
+            ->set('p.avg', $qb->expr()->literal($poll->getAvg()))
             ->where('p.id = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
@@ -85,7 +87,7 @@ class VoteListener
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
         $qb->update(Vote::class, 'v')
-            ->set('v.percent', "(100 / {$total} ) * v.total")
+            ->set('v.percent', $total ? "(100 / {$total} ) * v.total" : 0)
             ->where('v.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
