@@ -12,6 +12,7 @@ use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity\Option;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote;
+use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
  * Class VoteListener
@@ -20,11 +21,11 @@ use MSBios\Voting\Resource\Doctrine\Entity\Vote;
 class VoteListener
 {
     /**
-     * @param Vote $entity
+     * @param VoteInterface $entity
      * @param LifecycleEventArgs $args
      * @ORM\PreUpdate
      */
-    public function onPreUpdate(Vote $entity, LifecycleEventArgs $args)
+    public function onPreUpdate(VoteInterface $entity, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
@@ -41,11 +42,11 @@ class VoteListener
     }
 
     /**
-     * @param Vote $entity
+     * @param VoteInterface $entity
      * @param LifecycleEventArgs $args
      * @ORM\PostUpdate
      */
-    public function onPostUpdate(Vote $entity, LifecycleEventArgs $args)
+    public function onPostUpdate(VoteInterface $entity, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
