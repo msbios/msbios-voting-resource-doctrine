@@ -11,6 +11,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity;
+use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
  * Class RelationListener
@@ -19,17 +20,17 @@ use MSBios\Voting\Resource\Doctrine\Entity;
 class RelationListener
 {
     /**
-     * @param Entity\Vote\Relation $entity
+     * @param VoteInterface $vote
      * @param LifecycleEventArgs $args
      * @ORM\PostUpdate
      */
-    public function onPostUpdate(Entity\Vote\Relation $entity, LifecycleEventArgs $args)
+    public function onPostUpdate(VoteInterface $vote, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
 
         /** @var Entity\Poll\Relation $poll */
-        $poll = $entity->getPoll();
+        $poll = $vote->getPoll();
 
         /** @var int $total */
         $total = $dem->createQueryBuilder()
