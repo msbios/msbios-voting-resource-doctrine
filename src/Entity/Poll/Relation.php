@@ -42,7 +42,7 @@ class Relation extends Entity implements
     /**
      * @var Entity\Poll
      *
-     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Doctrine\Entity\Poll")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\RelationInterface")
      * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
      */
     private $poll;

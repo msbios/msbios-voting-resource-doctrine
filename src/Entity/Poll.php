@@ -55,7 +55,7 @@ class Poll extends Entity implements
      *
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Option", mappedBy="poll")
+     * @ORM\OneToMany(targetEntity="MSBios\Voting\Resource\Record\OptionInterface", mappedBy="poll")
      */
     private $options;
 

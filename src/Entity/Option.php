@@ -37,7 +37,7 @@ class Option extends Entity implements
     /**
      * @var PollInterface
      *
-     * @ORM\ManyToOne(targetEntity="Poll")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\PollInterface")
      * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
      */
     private $poll;
@@ -69,7 +69,7 @@ class Option extends Entity implements
      *
      * @var VoteInterface
      *
-     * @ORM\OneToOne(targetEntity="Vote", mappedBy="option")
+     * @ORM\OneToOne(targetEntity="MSBios\Voting\Resource\Record\VoteInterface", mappedBy="option")
      */
     private $vote;
 
