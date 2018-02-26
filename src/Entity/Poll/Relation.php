@@ -40,9 +40,9 @@ class Relation extends Entity implements
     private $code;
 
     /**
-     * @var Entity\Poll
+     * @var PollInterface
      *
-     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\RelationInterface")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\PollInterface")
      * @ORM\JoinColumn(name="pollid", referencedColumnName="id")
      */
     private $poll;
@@ -69,7 +69,7 @@ class Relation extends Entity implements
     }
 
     /**
-     * @return Entity\Poll
+     * @return PollInterface
      */
     public function getPoll()
     {
@@ -77,10 +77,10 @@ class Relation extends Entity implements
     }
 
     /**
-     * @param $poll
+     * @param PollInterface $poll
      * @return $this
      */
-    public function setPoll($poll)
+    public function setPoll(PollInterface $poll)
     {
         $this->poll = $poll;
         return $this;
