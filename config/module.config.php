@@ -37,8 +37,8 @@ return [
                 'resolvers' => [
                     Record\PollInterface::class =>
                         Entity\Poll::class,
-                    Record\RelationInterface::class =>
-                        Relation::class,
+                    Record\Poll\RelationInterface::class =>
+                        Entity\Poll\Relation::class,
                     Record\OptionInterface::class =>
                         Entity\Option::class,
                     Record\VoteInterface::class =>
