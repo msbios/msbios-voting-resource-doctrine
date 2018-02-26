@@ -21,7 +21,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
  * Class Relation
  * @package MSBios\Voting\Resource\Doctrine\Entity\Vote
  *
- * @ORM\Entity
+ * -ORM\Entity
  * @ORM\Table(name="vot_t_vote_relations",
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
