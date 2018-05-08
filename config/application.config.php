@@ -6,6 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
+        'MSBios\I18n\Doctrine',
         'Zend\Serializer',
         'Zend\Log',
         'Zend\Mvc\Plugin\FilePrg',
@@ -17,17 +18,14 @@ return [
         'Zend\Session',
         'Zend\Cache',
         'Zend\Paginator',
-
         'Zend\Form',
         'Zend\InputFilter',
         'Zend\Hydrator',
         'Zend\Db',
         'Zend\Router',
         'Zend\Mvc\Console',
-
         'DoctrineModule',
         'DoctrineORMModule',
-
         'MSBios\Application',
         'MSBios\Theme',
         'MSBios\Widget',

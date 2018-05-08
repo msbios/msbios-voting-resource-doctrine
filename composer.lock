@@ -1217,6 +1217,53 @@
             "time": "2017-11-17T14:30:58+00:00"
         },
         {
+            "name": "msbios/i18n-doctrine",
+            "version": "v1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msbios/msbios-i18n-doctrine.git",
+                "reference": "c67916e2066a73e970bd41b3a1f930150e067fa8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msbios/msbios-i18n-doctrine/zipball/c67916e2066a73e970bd41b3a1f930150e067fa8",
+                "reference": "c67916e2066a73e970bd41b3a1f930150e067fa8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "msbios/debug": "^1.0",
+                "msbios/portal-doctrine": "^1.0",
+                "msbios/test": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "zf": {
+                    "component": "MSBios\\I18n\\Doctrine"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MSBios\\I18n\\Doctrine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Judzhin Miles",
+                    "email": "info@msbios.com"
+                }
+            ],
+            "description": "MSBios I18n Doctrine",
+            "homepage": "https://github.com/msbios/msbios-i18n-doctrine",
+            "keywords": [
+                "php"
+            ],
+            "time": "2018-05-08T13:13:09+00:00"
+        },
+        {
             "name": "msbios/json",
             "version": "v1.0.0",
             "source": {
@@ -1415,17 +1462,20 @@
         },
         {
             "name": "msbios/voting-i18n-resource-doctrine",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/msbios/msbios-voting-i18n-resource-doctrine.git",
-                "reference": "390b0b6716fabbb3af564dc572c6e47043bb2d92"
+                "reference": "5a37b5e0fb498541e8fdf1a7dabdd5726896314f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/msbios/msbios-voting-i18n-resource-doctrine/zipball/390b0b6716fabbb3af564dc572c6e47043bb2d92",
-                "reference": "390b0b6716fabbb3af564dc572c6e47043bb2d92",
+                "url": "https://api.github.com/repos/msbios/msbios-voting-i18n-resource-doctrine/zipball/5a37b5e0fb498541e8fdf1a7dabdd5726896314f",
+                "reference": "5a37b5e0fb498541e8fdf1a7dabdd5726896314f",
                 "shasum": ""
+            },
+            "require": {
+                "msbios/i18n-doctrine": "^1.0"
             },
             "require-dev": {
                 "msbios/application": "^1.0",
@@ -1460,7 +1510,7 @@
             "keywords": [
                 "php"
             ],
-            "time": "2018-05-07T14:15:34+00:00"
+            "time": "2018-05-08T13:18:29+00:00"
         },
         {
             "name": "msbios/voting-resource",

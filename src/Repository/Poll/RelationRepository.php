@@ -11,6 +11,7 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
+use MSBios\I18n\Doctrine\TranslationQueryTrait;
 use MSBios\Voting\Resource\Doctrine\Entity\Option;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote\Relation as VoteRelation;
@@ -22,6 +23,8 @@ use MSBios\Voting\Resource\Record\PollInterface;
  */
 class RelationRepository extends EntityRepository
 {
+
+    use TranslationQueryTrait;
 
     /**
      * @param PollInterface $poll
@@ -38,16 +41,8 @@ class RelationRepository extends EntityRepository
                 'code' => $code
             ]);
 
-        /** @var Query $query */
-        $query = $qb->getQuery();
-
-        /** Add Translation Hint */
-        $query->setHint(
-            Query::HINT_CUSTOM_OUTPUT_WALKER,
-            TranslationWalker::class
-        );
-
-        return $query->getOneOrNullResult();
+        return $this->addTranslation($qb->getQuery())
+            ->getOneOrNullResult();
     }
 
     /**
@@ -73,6 +68,7 @@ class RelationRepository extends EntityRepository
                 'code' => $poll->getCode()
             ]);
 
-        return $qb->getQuery()->getResult();
+        return $this->addTranslation($qb->getQuery())
+            ->getResult();
     }
 }
