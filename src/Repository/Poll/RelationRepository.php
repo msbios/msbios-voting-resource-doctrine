@@ -7,8 +7,10 @@
 namespace MSBios\Voting\Resource\Doctrine\Repository\Poll;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
+use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use MSBios\Voting\Resource\Doctrine\Entity\Option;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote\Relation as VoteRelation;
@@ -20,6 +22,34 @@ use MSBios\Voting\Resource\Record\PollInterface;
  */
 class RelationRepository extends EntityRepository
 {
+
+    /**
+     * @param PollInterface $poll
+     * @param $code
+     */
+    public function findOneByPollAndCode(PollInterface $poll, $code)
+    {
+        /** @var QueryBuilder $qb */
+        $qb = $this->createQueryBuilder('pr');
+        $qb->where('pr.poll = :poll')
+            ->andWhere('pr.code = :code')
+            ->setParameters([
+                'poll' => $poll,
+                'code' => $code
+            ]);
+
+        /** @var Query $query */
+        $query = $qb->getQuery();
+
+        /** Add Translation Hint */
+        $query->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            TranslationWalker::class
+        );
+
+        return $query->getOneOrNullResult();
+    }
+
     /**
      * @param PollInterface $poll
      * @return mixed
@@ -41,8 +71,7 @@ class RelationRepository extends EntityRepository
             ->setParameters([
                 'identifier' => $poll->getId(),
                 'code' => $poll->getCode()
-            ])
-        ;
+            ]);
 
         return $qb->getQuery()->getResult();
     }
