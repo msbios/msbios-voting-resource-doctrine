@@ -7,6 +7,7 @@
 namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -25,6 +26,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
+ * @Gedmo\TranslationEntity(class="MSBios\Voting\I18n\Resource\Doctrine\Entity\OptionTranslation")
  */
 class Option extends Entity implements
     TimestampableAwareInterface,
@@ -47,6 +49,7 @@ class Option extends Entity implements
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Gedmo\Translatable
      */
     private $name;
 

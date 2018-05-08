@@ -8,6 +8,7 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -24,6 +25,7 @@ use MSBios\Voting\Resource\Record\PollInterface;
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
+ * @Gedmo\TranslationEntity(class="MSBios\Voting\I18n\Resource\Doctrine\Entity\PollTranslation")
  */
 class Poll extends Entity implements
     TimestampableAwareInterface,
@@ -44,6 +46,7 @@ class Poll extends Entity implements
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=255)
+     * @Gedmo\Translatable
      */
     private $subject;
 

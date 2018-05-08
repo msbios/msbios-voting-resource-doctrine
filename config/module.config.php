@@ -8,7 +8,6 @@
 namespace MSBios\Voting\Resource\Doctrine;
 
 use MSBios\Doctrine\Initializer\ObjectManagerInitializer;
-use MSBios\Voting\Resource\Doctrine\Entity\Poll\Relation;
 use MSBios\Voting\Resource\Record;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -117,8 +116,8 @@ return [
                             'action' => 'votes'
                         ]
                     ]
-                ],
+                ]
             ]
         ]
-    ],
+    ]
 ];
