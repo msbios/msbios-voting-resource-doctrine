@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\Repository\Poll;
+namespace MSBios\Voting\Resource\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
@@ -18,7 +18,7 @@ use MSBios\Voting\Resource\Record\PollInterface;
 
 /**
  * Class PollRelationRepository
- * @package MSBios\Voting\Resource\Doctrine\Repository\Poll
+ * @package MSBios\Voting\Resource\Doctrine\Repository
  */
 class PollRelationRepository extends EntityRepository
 {
