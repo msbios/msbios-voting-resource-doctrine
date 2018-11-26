@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\EventListener\Vote;
+namespace MSBios\Voting\Resource\Doctrine\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -14,28 +14,27 @@ use MSBios\Voting\Resource\Doctrine\Entity;
 use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
- * Class RelationListener
- * @package MSBios\Voting\Resource\Doctrine\EventListener\Vote
+ * Class VoteRelationListener
+ * @package MSBios\Voting\Resource\Doctrine\EventListener
  */
-class RelationListener
+class VoteRelationListener
 {
     /**
      * @param VoteInterface $vote
      * @param LifecycleEventArgs $args
-     * @ORM\PostUpdate
      */
     public function onPostUpdate(VoteInterface $vote, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
 
-        /** @var Entity\Poll\PollRelation $poll */
+        /** @var Entity\PollRelation $poll */
         $poll = $vote->getPoll();
 
         /** @var int $total */
         $total = $dem->createQueryBuilder()
             ->select('SUM(vr.total) as result')
-            ->from(Entity\Vote\VoteRelation::class, 'vr')
+            ->from(Entity\VoteRelation::class, 'vr')
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
             ->getQuery()
@@ -46,7 +45,7 @@ class RelationListener
         /** @var float $avg */
         $avg = $dem->createQueryBuilder()
             ->select('SUM((o.ponderability * vr.total)) AS result')
-            ->from(Entity\Vote\VoteRelation::class, 'vr')
+            ->from(Entity\VoteRelation::class, 'vr')
             ->join(Entity\Option::class, 'o', 'WITH', 'o.id = vr.option')
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
@@ -57,7 +56,7 @@ class RelationListener
 
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
-        $qb->update(Entity\Poll\PollRelation::class, 'pr')
+        $qb->update(Entity\PollRelation::class, 'pr')
             ->set('pr.total', $qb->expr()->literal($poll->getTotal()))
             ->set('pr.avg', $qb->expr()->literal($poll->getAvg()))
             ->where('pr.id = :poll')
@@ -67,7 +66,7 @@ class RelationListener
 
         /** @var QueryBuilder $qb */
         $qb = $dem->createQueryBuilder();
-        $qb->update(Entity\Vote\VoteRelation::class, 'vr')
+        $qb->update(Entity\VoteRelation::class, 'vr')
             ->set('vr.percent', $total ? "(100 / {$total} ) * vr.total" : 0)
             ->where('vr.poll = :poll')
             ->setParameter('poll', $poll)
