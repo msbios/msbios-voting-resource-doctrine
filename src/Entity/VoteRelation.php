@@ -26,7 +26,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
  *     indexes={
  *          @ORM\Index(name="rowstatus", columns={"rowstatus"})}
  *     )
- * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\RelationListener"})
+ * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\VoteRelationListener"})
  * @ORM\MappedSuperclass
  */
 class VoteRelation extends Entity implements
