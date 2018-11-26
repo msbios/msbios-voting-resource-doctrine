@@ -25,7 +25,7 @@ class VoteListener
      * @param LifecycleEventArgs $args
      * @ORM\PreUpdate
      */
-    public function onPreUpdate(VoteInterface $vote, LifecycleEventArgs $args)
+    public function preUpdate(VoteInterface $vote, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
@@ -46,7 +46,7 @@ class VoteListener
      * @param LifecycleEventArgs $args
      * @ORM\PostUpdate
      */
-    public function onPostUpdate(VoteInterface $entity, LifecycleEventArgs $args)
+    public function postUpdate(VoteInterface $entity, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();

@@ -22,8 +22,9 @@ class VoteRelationListener
     /**
      * @param VoteInterface $vote
      * @param LifecycleEventArgs $args
+     * @ORM\PostUpdate
      */
-    public function onPostUpdate(VoteInterface $vote, LifecycleEventArgs $args)
+    public function postUpdate(VoteInterface $vote, LifecycleEventArgs $args)
     {
         /** @var ObjectManager $dem */
         $dem = $args->getObjectManager();
