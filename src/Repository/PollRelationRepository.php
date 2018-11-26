@@ -22,7 +22,6 @@ use MSBios\Voting\Resource\Record\PollInterface;
  */
 class PollRelationRepository extends EntityRepository
 {
-
     use TranslationQueryTrait;
 
     /**
