@@ -5,13 +5,15 @@
  */
 namespace MSBios\Voting\Resource\Doctrine;
 
+use Doctrine\ORM\Mapping as ORM;
 use MSBios\Resource\Doctrine\Entity as DefaultEntity;
 
 /**
  * Class Entity
  * @package MSBios\Voting\Resource\Doctrine
+ * @ORM\MappedSuperclass
  */
-class Entity extends DefaultEntity
+abstract class Entity extends DefaultEntity
 {
-
+    // ...
 }

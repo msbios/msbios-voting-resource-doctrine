@@ -6,10 +6,10 @@
 namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 /**
- * Trait PercentTrait
+ * Trait PercentableTrait
  * @package MSBios\Voting\Resource\Doctrine\Entity
  */
-trait PercentTrait
+trait PercentableTrait
 {
     /**
      * @var integer (Option::$total/Poll::$total)*100

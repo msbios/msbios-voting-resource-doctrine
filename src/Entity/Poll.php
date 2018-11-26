@@ -50,8 +50,8 @@ class Poll extends Entity implements
      */
     private $subject;
 
-    use TotalTrait;
-    use AvgTrait;
+    use TotalableTrait;
+    use AvgableTrait;
 
     /**
      * One Poll has Many Options.
@@ -65,9 +65,8 @@ class Poll extends Entity implements
     /**
      * Poll constructor.
      */
-    public function init()
+    public function __construct()
     {
-        parent::init();
         $this->options = new ArrayCollection;
     }
 

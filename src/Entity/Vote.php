@@ -44,8 +44,8 @@ class Vote extends Entity implements
      */
     private $poll;
 
-    use TotalTrait;
-    use PercentTrait;
+    use TotalableTrait;
+    use PercentableTrait;
 
     /**
      * @var integer Vote::$total * Option::$ponderability

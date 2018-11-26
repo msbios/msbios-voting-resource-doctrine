@@ -7,6 +7,7 @@
 
 namespace MSBios\Voting\Resource\Doctrine;
 
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use MSBios\Doctrine\Initializer\ObjectManagerInitializer;
 use MSBios\Voting\Resource\Record;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -16,7 +17,7 @@ return [
         'driver' => [
             // defines an annotation driver with two paths, and names it `my_annotation_driver`
             Module::class => [
-                'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
+                'class' => AnnotationDriver::class,
                 'cache' => 'array',
                 'paths' => [
                     __DIR__ . '/../src/Entity'
@@ -27,7 +28,8 @@ return [
             // Override `orm_default` only if you know what you're doing
             'orm_default' => [
                 'drivers' => [
-                    Entity::class => Module::class,
+                    Entity::class =>
+                        Module::class,
                 ],
             ],
         ],
@@ -36,14 +38,14 @@ return [
                 'resolvers' => [
                     Record\PollInterface::class =>
                         Entity\Poll::class,
-                    Record\Poll\RelationInterface::class =>
-                        Entity\Poll\Relation::class,
+                    Record\PollRelation::class =>
+                        Entity\PollRelation::class,
                     Record\OptionInterface::class =>
                         Entity\Option::class,
                     Record\VoteInterface::class =>
                         Entity\Vote::class,
-                    Record\Vote\RelationInterface::class =>
-                        Entity\Vote\Relation::class
+                    Record\VoteRelation::class =>
+                        Entity\VoteRelation::class
                 ],
             ],
         ],
@@ -55,9 +57,6 @@ return [
                 InvokableFactory::class,
             Controller\RelationController::class =>
                 InvokableFactory::class
-        ],
-        'initializers' => [
-            new ObjectManagerInitializer
         ]
     ],
 

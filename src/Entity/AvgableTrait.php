@@ -8,10 +8,10 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Trait AvgTrait
+ * Trait AvgableTrait
  * @package MSBios\Voting\Resource\Doctrine\Entity
  */
-trait AvgTrait
+trait AvgableTrait
 {
     /**
      * @var float  // SUM(Vote::$total)|SUM(Option::$total)

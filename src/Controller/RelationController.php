@@ -11,7 +11,7 @@ use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use MSBios\Doctrine\ObjectManagerAwareTrait;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote;
-use MSBios\Voting\Resource\Doctrine\Repository\Poll\RelationRepository;
+use MSBios\Voting\Resource\Doctrine\Repository\Poll\PollRelationRepository;
 use MSBios\Voting\Resource\Doctrine\Repository\PollRepository;
 use Zend\Console\Request as ConsoleRequest;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -34,7 +34,7 @@ class RelationController extends AbstractActionController implements ObjectManag
         $dem = $this->getObjectManager();
 
         /** @var PollRepository $repository */
-        return $dem->getRepository(Poll\Relation::class);
+        return $dem->getRepository(Poll\PollRelation::class);
     }
 
     /**
@@ -87,7 +87,7 @@ class RelationController extends AbstractActionController implements ObjectManag
         /** @var int $id */
         $id = $request->getParam('pollid');
 
-        /** @var RelationRepository $repository */
+        /** @var PollRelationRepository $repository */
         $repository = $this->getRepository();
 
         if (! ($poll = $repository->find($id))) {

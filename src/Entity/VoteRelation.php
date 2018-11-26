@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\Entity\Vote;
+namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
@@ -19,7 +19,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
 
 /**
  * Class Relation
- * @package MSBios\Voting\Resource\Doctrine\Entity\Vote
+ * @package MSBios\Voting\Resource\Doctrine\Entity
  *
  * -ORM\Entity
  * @ORM\Table(name="vot_t_vote_relations",
@@ -29,7 +29,7 @@ use MSBios\Voting\Resource\Record\VoteInterface;
  * @ORM\EntityListeners({"MSBios\Voting\Resource\Doctrine\EventListener\Vote\RelationListener"})
  * @ORM\MappedSuperclass
  */
-class Relation extends Entity implements
+class VoteRelation extends Entity implements
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
     VoteInterface,
@@ -41,7 +41,7 @@ class Relation extends Entity implements
     /**
      * @var PollInterface
      *
-     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\Poll\RelationInterface")
+     * @ORM\ManyToOne(targetEntity="MSBios\Voting\Resource\Record\PollRelation")
      * @ORM\JoinColumn(name="relationid", referencedColumnName="id")
      */
     private $poll;
@@ -56,8 +56,8 @@ class Relation extends Entity implements
      */
     private $option;
 
-    use Entity\TotalTrait;
-    use Entity\PercentTrait;
+    use Entity\TotalableTrait;
+    use Entity\PercentableTrait;
 
     /**
      * @return PollInterface

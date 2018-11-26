@@ -4,7 +4,7 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Voting\Resource\Doctrine\Entity\Poll;
+namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,12 +18,12 @@ use MSBios\Voting\Resource\Record\RelationInterface;
 
 /**
  * Class Relation
- * @package MSBios\Voting\Resource\Doctrine\Entity\Poll
+ * @package MSBios\Voting\Resource\Doctrine\Entity
  *
- * @ORM\Entity(repositoryClass="MSBios\Voting\Resource\Doctrine\Repository\Poll\RelationRepository")
+ * @ORM\Entity(repositoryClass="MSBios\Voting\Resource\Doctrine\Repository\PollRelationRepository")
  * @ORM\Table(name="vot_t_poll_relations")
  */
-class Relation extends Entity implements
+class PollRelation extends Entity implements
     TimestampableAwareInterface,
     RowStatusableAwareInterface,
     PollInterface,
@@ -47,8 +47,8 @@ class Relation extends Entity implements
      */
     private $poll;
 
-    use Entity\TotalTrait;
-    use Entity\AvgTrait;
+    use Entity\TotalableTrait;
+    use Entity\AvgableTrait;
 
     /**
      * @return string
