@@ -8,7 +8,6 @@ namespace MSBios\Voting\Resource\Doctrine\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\QueryBuilder;
 use MSBios\Voting\Resource\Doctrine\Entity;
 use MSBios\Voting\Resource\Record\VoteInterface;

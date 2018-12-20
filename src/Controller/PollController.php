@@ -8,7 +8,7 @@ namespace MSBios\Voting\Resource\Doctrine\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use MSBios\Doctrine\ObjectManagerAwareTrait;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\Vote;
 use MSBios\Voting\Resource\Doctrine\Repository\PollRepository;
@@ -22,7 +22,7 @@ use Zend\Stdlib\RequestInterface;
  */
 class PollController extends AbstractActionController implements ObjectManagerAwareInterface
 {
-    use ObjectManagerAwareTrait;
+    use ProvidesObjectManager;
 
     /**
      * @return \Doctrine\Common\Persistence\ObjectRepository

@@ -6,8 +6,7 @@
 
 namespace MSBios\Voting\Resource\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
+use MSBios\Resource\Doctrine\EntityRepository;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 
 /**
@@ -16,6 +15,9 @@ use MSBios\Voting\Resource\Doctrine\Entity\Poll;
  */
 class PollRepository extends EntityRepository
 {
+    /** @const DEFAULT_ALIAS */
+    const DEFAULT_ALIAS = 'p';
+
     /**
      * @param mixed $id
      * @param null $lockMode

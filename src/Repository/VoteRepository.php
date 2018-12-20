@@ -5,7 +5,7 @@
  */
 namespace MSBios\Voting\Resource\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use MSBios\Resource\Doctrine\EntityRepository;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 
 /**
@@ -14,6 +14,9 @@ use MSBios\Voting\Resource\Doctrine\Entity\Poll;
  */
 class VoteRepository extends EntityRepository
 {
+    /** @const DEFAULT_ALIAS */
+    const DEFAULT_ALIAS = 'v';
+
     /**
      * @param Poll $poll
      */

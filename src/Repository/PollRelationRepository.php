@@ -6,10 +6,10 @@
 
 namespace MSBios\Voting\Resource\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use MSBios\I18n\Doctrine\TranslationQueryTrait;
+use MSBios\Resource\Doctrine\EntityRepository;
 use MSBios\Voting\Resource\Doctrine\Entity\Option;
 use MSBios\Voting\Resource\Doctrine\Entity\Poll;
 use MSBios\Voting\Resource\Doctrine\Entity\PollRelation;
@@ -22,6 +22,9 @@ use MSBios\Voting\Resource\Record\PollInterface;
  */
 class PollRelationRepository extends EntityRepository
 {
+    /** @const DEFAULT_ALIAS */
+    const DEFAULT_ALIAS = 'pr';
+
     use TranslationQueryTrait;
 
     /**
