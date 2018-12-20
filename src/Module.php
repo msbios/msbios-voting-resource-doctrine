@@ -5,42 +5,32 @@
  */
 namespace MSBios\Voting\Resource\Doctrine;
 
-use MSBios\ModuleInterface;
-use Zend\Loader\AutoloaderFactory;
-use Zend\Loader\StandardAutoloader;
-
 /**
  * Class Module
  * @package MSBios\Voting\Resource\Doctrine
  */
-class Module implements ModuleInterface
+class Module extends \MSBios\Module
 {
     /** @const VERSION */
-    const VERSION = '1.0.71';
+    const VERSION = '1.0.72';
 
     /**
      * @inheritdoc
      *
-     * @return array|mixed|\Traversable
+     * @return string
      */
-    public function getConfig()
+    protected function getDir()
     {
-        return include __DIR__ . '/../config/module.config.php';
+        return __DIR__;
     }
 
     /**
      * @inheritdoc
      *
-     * @return array
+     * @return string
      */
-    public function getAutoloaderConfig()
+    protected function getNamespace()
     {
-        return [
-            AutoloaderFactory::STANDARD_AUTOLOADER => [
-                StandardAutoloader::LOAD_NS => [
-                    __NAMESPACE__ => __DIR__,
-                ],
-            ],
-        ];
+       return __NAMESPACE__;
     }
 }
