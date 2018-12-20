@@ -12,7 +12,7 @@ namespace MSBios\Voting\Resource\Doctrine;
 class Module extends \MSBios\Module
 {
     /** @const VERSION */
-    const VERSION = '1.0.72';
+    const VERSION = '1.0.73';
 
     /**
      * @inheritdoc
@@ -31,6 +31,6 @@ class Module extends \MSBios\Module
      */
     protected function getNamespace()
     {
-       return __NAMESPACE__;
+        return __NAMESPACE__;
     }
 }
