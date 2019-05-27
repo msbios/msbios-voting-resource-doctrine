@@ -6,7 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
-
+        'MSBios\Session',
         'Zend\Serializer',
         'Zend\Mvc\Plugin\FilePrg',
         'Zend\Mvc\Plugin\FlashMessenger',
