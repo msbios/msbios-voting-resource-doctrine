@@ -8,6 +8,7 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use MSBios\Doctrine\IdentifierAwareTrait;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -29,6 +30,7 @@ class PollRelation extends Entity implements
     PollInterface,
     RelationInterface
 {
+    use IdentifierAwareTrait;
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
 

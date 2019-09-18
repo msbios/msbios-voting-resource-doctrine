@@ -6,6 +6,7 @@
 return [
     // Retrieve list of modules used in this application.
     'modules' => [
+        'MSBios\InputFilter',
         'MSBios\Session',
         'Zend\Serializer',
         'Zend\Mvc\Plugin\FilePrg',

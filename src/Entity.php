@@ -16,5 +16,5 @@ use MSBios\Resource\Doctrine\IdentifierAwareTrait;
  */
 abstract class Entity extends DefaultEntity
 {
-    use IdentifierAwareTrait;
+    // use IdentifierAwareTrait;
 }

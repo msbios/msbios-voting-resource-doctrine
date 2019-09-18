@@ -9,6 +9,7 @@ namespace MSBios\Voting\Resource\Doctrine\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use MSBios\Doctrine\IdentifierAwareTrait;
 use MSBios\Resource\Doctrine\RowStatusableAwareInterface;
 use MSBios\Resource\Doctrine\RowStatusableAwareTrait;
 use MSBios\Resource\Doctrine\TimestampableAwareInterface;
@@ -32,6 +33,7 @@ class Poll extends Entity implements
     RowStatusableAwareInterface,
     PollInterface
 {
+    use IdentifierAwareTrait;
     use TimestampableAwareTrait;
     use RowStatusableAwareTrait;
 
